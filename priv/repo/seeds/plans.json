@@ -1,0 +1,16 @@
+[
+    {
+        "name": "Basic Plan",
+        "slug": "basic",
+        "description": "Basic Plan for individuals or new entrants in the market",
+        "features": "",
+        "cost": "5"
+    },
+    {
+        "name": "Enterprise",
+        "slug": "enterprise",
+        "description": "For business organization or business ventures with over 10 employees",
+        "features": "",
+        "cost": "10"
+    }
+]
