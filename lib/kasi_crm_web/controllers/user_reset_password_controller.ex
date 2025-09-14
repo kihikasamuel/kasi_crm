@@ -13,7 +13,7 @@ defmodule KasiCrmWeb.UserResetPasswordController do
     if user = Accounts.get_user_by_email(email) do
       Accounts.deliver_user_reset_password_instructions(
         user,
-        &url(~p"/users/reset_password/#{&1}")
+        &url(~p"/users/reset-password/#{&1}")
       )
     end
 
@@ -36,7 +36,7 @@ defmodule KasiCrmWeb.UserResetPasswordController do
       {:ok, _} ->
         conn
         |> put_flash(:info, "Password reset successfully.")
-        |> redirect(to: ~p"/users/log_in")
+        |> redirect(to: ~p"/users/login")
 
       {:error, changeset} ->
         render(conn, :edit, changeset: changeset)

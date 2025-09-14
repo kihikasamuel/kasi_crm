@@ -21,12 +21,30 @@ import "phoenix_html"
 import {Socket} from "phoenix"
 import {LiveSocket} from "phoenix_live_view"
 import topbar from "../vendor/topbar"
+import "./config.js"
+import "./phoenix.js"
+import "./dashboards/crm-dashboard.js"
 
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 let liveSocket = new LiveSocket("/live", Socket, {
   longPollFallbackMs: 2500,
   params: {_csrf_token: csrfToken}
 })
+
+// direction
+var phoenixIsRTL = window.config.config.phoenixIsRTL;
+if (phoenixIsRTL) {
+  var linkDefault = document.getElementById('style-default');
+  var userLinkDefault = document.getElementById('user-style-default');
+  linkDefault.setAttribute('disabled', true);
+  userLinkDefault.setAttribute('disabled', true);
+  document.querySelector('html').setAttribute('dir', 'rtl');
+} else {
+  var linkRTL = document.getElementById('style-rtl');
+  var userLinkRTL = document.getElementById('user-style-rtl');
+  linkRTL.setAttribute('disabled', true);
+  userLinkRTL.setAttribute('disabled', true);
+}
 
 // Show progress bar on live navigation and form submits
 topbar.config({barColors: {0: "#29d"}, shadowColor: "rgba(0, 0, 0, .3)"})

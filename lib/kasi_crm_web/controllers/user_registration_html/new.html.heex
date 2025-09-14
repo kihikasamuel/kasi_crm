@@ -3,7 +3,7 @@
     Register for an account
     <:subtitle>
       Already registered?
-      <.link navigate={~p"/users/log_in"} class="font-semibold text-brand hover:underline">
+      <.link navigate={~p"/users/login"} class="font-semibold text-brand hover:underline">
         Log in
       </.link>
       to your account now.
@@ -15,7 +15,9 @@
       Oops, something went wrong! Please check the errors below.
     </.error>
 
+     <.input field={f[:name]} type="text" label="Names" required />
     <.input field={f[:email]} type="email" label="Email" required />
+    <.input field={f[:msisdn]} type="text" label="Phone Number" required />
     <.input field={f[:password]} type="password" label="Password" required />
 
     <:actions>

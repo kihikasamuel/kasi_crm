@@ -2,6 +2,8 @@ defmodule KasiCrm.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias KasiCrm.Plans
+
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "users" do
@@ -168,13 +170,13 @@ defmodule KasiCrm.Accounts.User do
   end
 
   defp maybe_configure_default_plan(changeset) do
+    plan = Plans.default_plan()
+
     if get_field(changeset, :plan_id) do
       changeset
     else
-      %{id: id} = KasiCrm.Plans.default_plan()
-
       changeset
-      |> put_change(:plan_id, id)
+      |> put_change(:plan_id, plan.id)
     end
   end
 end

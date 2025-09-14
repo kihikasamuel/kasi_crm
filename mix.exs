@@ -83,6 +83,7 @@ defmodule KasiCrm.MixProject do
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
       "assets.build": ["tailwind kasi_crm", "esbuild kasi_crm"],
       "assets.deploy": [
+        "cmd --cd assets npm ci",
         "tailwind kasi_crm --minify",
         "esbuild kasi_crm --minify",
         "phx.digest"

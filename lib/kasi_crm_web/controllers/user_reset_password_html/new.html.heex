@@ -4,7 +4,7 @@
     <:subtitle>We'll send a password reset link to your inbox</:subtitle>
   </.header>
 
-  <.simple_form :let={f} for={@conn.params["user"]} as={:user} action={~p"/users/reset_password"}>
+  <.simple_form :let={f} for={@conn.params["user"]} as={:user} action={~p"/users/reset-password"}>
     <.input field={f[:email]} type="email" placeholder="Email" required />
     <:actions>
       <.button phx-disable-with="Sending..." class="w-full">
@@ -15,6 +15,6 @@
 
   <p class="text-center text-sm mt-4">
     <.link href={~p"/users/register"}>Register</.link>
-    | <.link href={~p"/users/log_in"}>Log in</.link>
+    | <.link href={~p"/users/login"}>Log in</.link>
   </p>
 </div>

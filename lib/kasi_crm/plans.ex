@@ -8,6 +8,8 @@ defmodule KasiCrm.Plans do
 
   alias KasiCrm.Plans.Plan
 
+  def default_plan(), do: Repo.get_by(Plan, slug: "basic")
+
   @doc """
   Returns the list of plans.
 
@@ -36,8 +38,6 @@ defmodule KasiCrm.Plans do
 
   """
   def get_plan!(id), do: Repo.get!(Plan, id)
-
-  def default_plan(), do: Repo.get_by(Plan, slug: "basic") |> Repo.one()
 
   @doc """
   Creates a plan.
@@ -102,5 +102,18 @@ defmodule KasiCrm.Plans do
   """
   def change_plan(%Plan{} = plan, attrs \\ %{}) do
     Plan.changeset(plan, attrs)
+  end
+
+  def bytes_to_text(byte_string) do
+    extract_from_string(byte_string, "")
+  end
+
+  def extract_from_string(<<>>, acc), do: acc
+  def extract_from_string(<<c, rest::binary>>, acc) do
+    # # IO.puts(<<c>>)
+    # bits = <<a, b, c, d, e, f, g, h>>
+    # y = String.to_integer(bits, 2) |> IO.inspect()
+    extract = <<c>> |> String.to_integer(2) |> to_string
+    extract_from_string(rest, acc <> extract)
   end
 end

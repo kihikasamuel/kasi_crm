@@ -8,7 +8,7 @@ defmodule KasiCrmWeb.UserRegistrationControllerTest do
       conn = get(conn, ~p"/users/register")
       response = html_response(conn, 200)
       assert response =~ "Register"
-      assert response =~ ~p"/users/log_in"
+      assert response =~ ~p"/users/login"
       assert response =~ ~p"/users/register"
     end
 
@@ -37,7 +37,7 @@ defmodule KasiCrmWeb.UserRegistrationControllerTest do
       response = html_response(conn, 200)
       assert response =~ email
       assert response =~ ~p"/users/settings"
-      assert response =~ ~p"/users/log_out"
+      assert response =~ ~p"/users/log-out"
     end
 
     test "render errors for invalid data", %{conn: conn} do
