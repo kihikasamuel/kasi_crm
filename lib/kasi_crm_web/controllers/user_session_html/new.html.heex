@@ -27,6 +27,7 @@
               field={f[:email]}
               id="email"
               type="email"
+              placeholder="name@example.com"
             /><span class="fas fa-user text-body fs-9 form-icon"></span>
           </div>
         </div>
@@ -45,11 +46,12 @@
         <div class="row flex-between-center mb-7">
           <div class="col-auto">
             <div class="form-check mb-0">
-              <input
+              <.input
                 class="form-check-input"
+                field={f[:remember_me]}
                 id="basic-checkbox"
                 type="checkbox"
-                checked="checked"
+                checked={f[:remember_me].value == true}
               />
               <label
                 class="form-check-label mb-0"
@@ -65,7 +67,7 @@
         </div>
         <button class="btn btn-primary w-100 mb-3">Sign In</button>
         <div class="text-center">
-          <a class="fs-9 fw-bold" href="sign-up.html">Create an account</a>
+          <a class="fs-9 fw-bold" href="/users/signup">Create an account</a>
         </div>
       </.simple_form>
     </div>

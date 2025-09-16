@@ -1,0 +1,25 @@
+<.header>
+  User {@user.id}
+  <:subtitle>This is a user record from your database.</:subtitle>
+  <:actions>
+    <.link patch={~p"/support/portal/users/#{@user}/show/edit"} phx-click={JS.push_focus()}>
+      <.button>Edit user</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<%!-- <.list>
+</.list> --%>
+
+<.back navigate={~p"/support/portal/users"}>Back to users</.back>
+
+<.modal :if={@live_action == :edit} id="user-modal" show on_cancel={JS.patch(~p"/support/portal/users/#{@user}")}>
+  <.live_component
+    module={KasiCrmWeb.UserLive.FormComponent}
+    id={@user.id}
+    title={@page_title}
+    action={@live_action}
+    user={@user}
+    patch={~p"/support/portal/users/#{@user}"}
+  />
+</.modal>

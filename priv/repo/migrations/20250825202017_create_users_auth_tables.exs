@@ -5,7 +5,7 @@ defmodule KasiCrm.Repo.Migrations.CreateUsersAuthTables do
     execute "CREATE EXTENSION IF NOT EXISTS citext", ""
 
     create_if_not_exists table(:plans) do
-      add :name, :string
+      add :name, :citext, null: false
       add :slug, :string
       add :description, :string
       add :features, {:array, :map}

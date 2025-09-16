@@ -12,7 +12,7 @@ defmodule KasiCrmWeb.UserSessionControllerTest do
       conn = get(conn, ~p"/users/login")
       response = html_response(conn, 200)
       assert response =~ "Log in"
-      assert response =~ ~p"/users/register"
+      assert response =~ ~p"/users/signup"
       assert response =~ "Forgot your password?"
     end
 
@@ -36,7 +36,7 @@ defmodule KasiCrmWeb.UserSessionControllerTest do
       conn = get(conn, ~p"/")
       response = html_response(conn, 200)
       assert response =~ user.email
-      assert response =~ ~p"/users/settings"
+      assert response =~ ~p"/user/settings"
       assert response =~ ~p"/users/log-out"
     end
 

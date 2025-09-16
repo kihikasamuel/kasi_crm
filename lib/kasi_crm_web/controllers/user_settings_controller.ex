@@ -19,7 +19,7 @@ defmodule KasiCrmWeb.UserSettingsController do
         Accounts.deliver_user_update_email_instructions(
           applied_user,
           user.email,
-          &url(~p"/users/settings/confirm_email/#{&1}")
+          &url(~p"/user/settings/confirm_email/#{&1}")
         )
 
         conn
@@ -27,7 +27,7 @@ defmodule KasiCrmWeb.UserSettingsController do
           :info,
           "A link to confirm your email change has been sent to the new address."
         )
-        |> redirect(to: ~p"/users/settings")
+        |> redirect(to: ~p"/user/settings")
 
       {:error, changeset} ->
         render(conn, :edit, email_changeset: changeset)
@@ -42,7 +42,7 @@ defmodule KasiCrmWeb.UserSettingsController do
       {:ok, user} ->
         conn
         |> put_flash(:info, "Password updated successfully.")
-        |> put_session(:user_return_to, ~p"/users/settings")
+        |> put_session(:user_return_to, ~p"/user/settings")
         |> UserAuth.log_in_user(user)
 
       {:error, changeset} ->
@@ -55,12 +55,12 @@ defmodule KasiCrmWeb.UserSettingsController do
       :ok ->
         conn
         |> put_flash(:info, "Email changed successfully.")
-        |> redirect(to: ~p"/users/settings")
+        |> redirect(to: ~p"/user/settings")
 
       :error ->
         conn
         |> put_flash(:error, "Email change link is invalid or it has expired.")
-        |> redirect(to: ~p"/users/settings")
+        |> redirect(to: ~p"/user/settings")
     end
   end
 

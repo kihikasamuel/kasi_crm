@@ -17,10 +17,14 @@ defmodule KasiCrmWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :admin do
+    plug(:put_root_layout, html: {KasiCrmWeb.Layouts, :admin})
+  end
+
   scope "/", KasiCrmWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    get "/", UserSessionController, :new
   end
 
   # Other scopes may use custom stacks.
@@ -50,8 +54,8 @@ defmodule KasiCrmWeb.Router do
   scope "/", KasiCrmWeb do
     pipe_through [:browser, :redirect_if_user_is_authenticated]
 
-    get "/users/register", UserRegistrationController, :new
-    post "/users/register", UserRegistrationController, :create
+    get "/users/signup", UserRegistrationController, :new
+    post "/users/signup", UserRegistrationController, :create
     get "/users/login", UserSessionController, :new
     post "/users/login", UserSessionController, :create
     get "/users/reset-password", UserResetPasswordController, :new
@@ -63,9 +67,37 @@ defmodule KasiCrmWeb.Router do
   scope "/", KasiCrmWeb do
     pipe_through [:browser, :require_authenticated_user]
 
-    get "/users/settings", UserSettingsController, :edit
-    put "/users/settings", UserSettingsController, :update
-    get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
+    # org admin routes
+    live_session :admin_portal, on_mount: [
+      {KasiCrmWeb.UserAuth, :mount_current_user}
+      ] do
+        scope "/admin" do
+          live "/dashboard", UserLive.Index, :index
+        end
+      end
+
+    # maintainer admin routes
+    live_session :support_portal, on_mount: [
+      {KasiCrmWeb.UserAuth, :mount_current_user}
+      ] do
+        scope "/support/portal" do
+          live "/users", UserLive.Index, :index
+          live "/users/new", UserLive.Index, :new
+          live "/users/:id/edit", UserLive.Index, :edit
+
+          live("/users/:id", UserLive.Show, :show)
+          live "/users/:id/show/edit", UserLive.Show, :edit
+        end
+      end
+
+    # user settings routes
+    scope "/" do
+      get "/user/settings", UserSettingsController, :edit
+      put "/user/settings", UserSettingsController, :update
+      get "/user/settings/confirm_email/:token", UserSettingsController, :confirm_email
+      get "/users/:id/edit", UserSettingsController, :edit
+      get "/users/:id/show/edit", UserSettingsController, :edit
+    end
   end
 
   scope "/", KasiCrmWeb do

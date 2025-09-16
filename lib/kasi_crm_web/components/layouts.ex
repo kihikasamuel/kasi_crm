@@ -9,6 +9,7 @@ defmodule KasiCrmWeb.Layouts do
   `use KasiCrmWeb, :live_view`.
   """
   use KasiCrmWeb, :html
+  import KasiCrmWeb.Partials
 
   embed_templates "layouts/*"
 end
