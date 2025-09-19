@@ -1,5 +1,9 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+@import "./theme/theme-rtl.min.css";
+@import "./theme//theme.min.css";
+@import "./theme/user-rtl.min.css";
+@import "./theme/user.min.css";
 
 /* This file is for your main application CSS */
