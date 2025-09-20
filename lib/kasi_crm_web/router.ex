@@ -17,7 +17,7 @@ defmodule KasiCrmWeb.Router do
     plug :accepts, ["json"]
   end
 
-  pipeline :admin do
+  pipeline :admin_context do
     plug(:put_root_layout, html: {KasiCrmWeb.Layouts, :admin})
   end
 
@@ -65,14 +65,14 @@ defmodule KasiCrmWeb.Router do
   end
 
   scope "/", KasiCrmWeb do
-    pipe_through [:browser, :require_authenticated_user]
+    pipe_through [:browser, :admin_context, :require_authenticated_user]
 
     # org admin routes
     live_session :admin_portal, on_mount: [
       {KasiCrmWeb.UserAuth, :mount_current_user}
       ] do
         scope "/admin" do
-          live "/dashboard", UserLive.Index, :index
+          live "/dashboard", DashboardLive, :index
         end
       end
 
@@ -103,7 +103,7 @@ defmodule KasiCrmWeb.Router do
   scope "/", KasiCrmWeb do
     pipe_through [:browser]
 
-    delete "/users/log-out", UserSessionController, :delete
+    get "/users/log-out", UserSessionController, :delete
     get "/users/confirm", UserConfirmationController, :new
     post "/users/confirm", UserConfirmationController, :create
     get "/users/confirm/:token", UserConfirmationController, :edit

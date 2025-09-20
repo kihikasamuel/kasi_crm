@@ -41,7 +41,7 @@ config :esbuild,
   version: "0.17.11",
   kasi_crm: [
     args:
-      ~w(js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/* --external:/assets/vendor/* --public-path=/assets/),
+      ~w(js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/* --external:/assets/vendor/* --external:/assets/js/phoenix.js --external:/assets/js/config.js --public-path=/assets/),
     cd: Path.expand("../assets", __DIR__),
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
   ]

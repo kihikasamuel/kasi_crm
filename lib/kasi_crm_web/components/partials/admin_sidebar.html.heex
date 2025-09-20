@@ -1,5 +1,5 @@
-<nav class="navbar navbar-vertical navbar-expand-lg" style="display:none;">
-  <div class="collapse navbar-collapse" id="navbarVerticalCollapse">
+<nav class="navbar navbar-vertical navbar-expand-lg">
+  <div class=" navbar-collapse" id="navbarVerticalCollapse">
     <!-- scrollbar removed-->
     <div class="navbar-vertical-content">
       <ul class="navbar-nav flex-column" id="navbarVerticalNav">
@@ -7,77 +7,38 @@
           <!-- parent pages-->
           <div class="nav-item-wrapper">
             <a
-              class="nav-link dropdown-indicator label-1"
-              href="index.html%3Ftheme-control=true&amp;navigation-type=horizontal.html#nv-home"
+              class="nav-link label-1"
+              href="/admin/dashboard"
               role="button"
-              data-bs-toggle="collapse"
-              aria-expanded="true"
-              aria-controls="nv-home"
+              data-bs-toggle=""
+              aria-expanded="false"
             >
               <div class="d-flex align-items-center">
-                <div class="dropdown-indicator-icon-wrapper">
-                  <span class="fas fa-caret-right dropdown-indicator-icon"></span>
-                </div>
-                <span class="nav-link-icon"><span data-feather="pie-chart"></span></span><span class="nav-link-text">Home</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M10.5 6a7.5 7.5 0 1 0 7.5 7.5h-7.5V6Z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M13.5 10.5H21A7.5 7.5 0 0 0 13.5 3v7.5Z"
+                  />
+                </svg>
+                <span></span>
+                <span class="nav-link-text-wrapper">
+                  <span class="nav-link-text">Dashboard</span>
+                </span>
               </div>
             </a>
-            <div class="parent-wrapper label-1">
-              <ul
-                class="nav collapse parent show"
-                data-bs-parent="#navbarVerticalCollapse"
-                id="nv-home"
-              >
-                <li class="collapsed-nav-item-title d-none">Home</li>
-                <li class="nav-item">
-                  <a class="nav-link active" href="index.html">
-                    <div class="d-flex align-items-center">
-                      <span class="nav-link-text">E commerce</span>
-                    </div>
-                  </a>
-                  <!-- more inner pages-->
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="dashboard/project-management.html">
-                    <div class="d-flex align-items-center">
-                      <span class="nav-link-text">Project management</span>
-                    </div>
-                  </a>
-                  <!-- more inner pages-->
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="dashboard/crm.html">
-                    <div class="d-flex align-items-center">
-                      <span class="nav-link-text">CRM</span>
-                    </div>
-                  </a>
-                  <!-- more inner pages-->
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="dashboard/travel-agency.html">
-                    <div class="d-flex align-items-center">
-                      <span class="nav-link-text">Travel agency</span>
-                    </div>
-                  </a>
-                  <!-- more inner pages-->
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="dashboard/stock.html">
-                    <div class="d-flex align-items-center">
-                      <span class="nav-link-text">Stock</span><span class="badge ms-2 badge badge-phoenix badge-phoenix-warning ">new</span>
-                    </div>
-                  </a>
-                  <!-- more inner pages-->
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="apps/social/feed.html">
-                    <div class="d-flex align-items-center">
-                      <span class="nav-link-text">Social feed</span>
-                    </div>
-                  </a>
-                  <!-- more inner pages-->
-                </li>
-              </ul>
-            </div>
           </div>
         </li>
         <li class="nav-item">
@@ -3127,7 +3088,8 @@
               <div class="d-flex align-items-center">
                 <span class="nav-link-icon">
                   <span class="fa-brands fa-gulp ms-1 me-1 fa-lg"></span>
-                </span><span class="nav-link-text-wrapper"><span class="nav-link-text">Gulp</span></span>
+                </span>
+                <span class="nav-link-text-wrapper"><span class="nav-link-text">Gulp</span></span>
               </div>
             </a>
           </div>

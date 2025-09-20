@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="csrf-token" content={get_csrf_token()} />
-    <.live_title default="KasiCrm" suffix=" · Phoenix Framework">
+    <.live_title default="KasiCrm" suffix=" · Admin">
       {assigns[:page_title]}
     </.live_title>
     <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
@@ -28,6 +28,7 @@
     </script>
   </head>
   <body class="bg-white">
+    <.top_nav />
     <.admin_sidebar />
     <%!-- current_user={assigns[:current_user]} --%>
     
